@@ -7,6 +7,7 @@ use quicli::prelude::*;
 use std::fs;
 use std::path::PathBuf;
 use walkdir::WalkDir;
+use placeholders;
 
 fn engine() -> liquid::Parser {
     liquid::ParserBuilder::new().build()
@@ -22,6 +23,14 @@ pub fn substitute(name: &str) -> Result<liquid::Object> {
     template.insert(
         String::from("authors"),
         liquid::Value::scalar(&cargo::get_authors()?),
+    );
+    template.insert(
+        String::from("date"),
+        liquid::Value::scalar(&placeholders::get_date()?),
+    );
+    template.insert(
+        String::from("year"),
+        liquid::Value::scalar(&placeholders::get_year()?),
     );
     Ok(template)
 }

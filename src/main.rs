@@ -9,6 +9,7 @@ extern crate liquid;
 extern crate regex;
 extern crate remove_dir_all;
 extern crate walkdir;
+extern crate chrono;
 
 mod cargo;
 mod emoji;
@@ -16,6 +17,7 @@ mod git;
 mod interactive;
 mod progressbar;
 mod template;
+mod placeholders;
 
 use console::style;
 use quicli::prelude::*;
