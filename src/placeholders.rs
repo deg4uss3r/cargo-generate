@@ -9,9 +9,3 @@ pub fn get_date() -> Result<String, ParseError> {
 
     Ok(datetime)
 }
-
-pub fn get_year() -> Result<String, ParseError> {
-    let dt = Local::now(); 
-
-    Ok(format!("{}", dt.year()))
-}

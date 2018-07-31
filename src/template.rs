@@ -28,9 +28,12 @@ pub fn substitute(name: &str) -> Result<liquid::Object> {
         String::from("date"),
         liquid::Value::scalar(&placeholders::get_date()?),
     );
+
+    let year: String = placeholders::get_date()?;
+
     template.insert(
         String::from("year"),
-        liquid::Value::scalar(&placeholders::get_year()?),
+        liquid::Value::scalar(year[0..4].to_string()),
     );
     Ok(template)
 }
