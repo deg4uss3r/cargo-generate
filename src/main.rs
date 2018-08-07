@@ -64,6 +64,8 @@ pub struct Args {
     /// Enforce to create a new project without case conversion of project name
     #[structopt(long = "force", short = "f")]
     force: bool,
+    #[structopt(long = "branch", default_value = "master")]
+    branch: String,
 }
 
 main!(|_cli: Cli| {
@@ -97,7 +99,7 @@ main!(|_cli: Cli| {
         "Target directory `{}` already exists, aborting.",
         project_dir.display()
     );
-
+    println!("branch: {}", &args.branch);
     git::create(&project_dir, args)?;
     git::remove_history(&project_dir)?;
 
